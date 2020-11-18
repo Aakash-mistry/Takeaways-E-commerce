@@ -1,0 +1,101 @@
+<div class="heading-2" style="margin-top: 30px; margin-bottom: 30px">
+     Be careful admin this will create first impression
+</div>
+
+<div class="container" style="margin-bottom: 50px!important;">
+     <div class="row">
+          <form class="col s12" action="/admin/create-new-slider" method="POST">
+               <div class="row">
+                    <div class="input-field col s12 l8">
+                         <input id="caption" name="caption" type="text">
+                         <label for="caption">Write your slider caption</label>
+                    </div>
+                     <div class="input-field col s12 l4">
+                         <input id="caption" name="captionColorName" type="text">
+                         <label for="caption">slider caption colour name</label>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="input-field col s12 l4">
+                         <input id="description" name="sliderDescription" type="text">
+                         <label for="description">Your Slider Description</label>
+                    </div>
+                    <div class="input-field col s12 l4">
+                         <input type="text" name="animationName" id="animation_name">
+                         <label for="animation_name">Take suggession from Name</label>
+                         <span class="helper-text">Name - center-align - left-align - right-align</span>
+                    </div>
+                    <div class="input-field col s12 l4">
+                         <i class="material-icons prefix admin-blue-text">link</i>
+                         <input type="text" name="link" id="Link">
+                         <label for="Link">Enter your final redirection link</label>
+                    </div>
+               </div>
+               <div class="row">
+                     <div class="input-field file-field col s12">
+                         <div class="btn transparent black-text admin-blue-background">
+                              <span><i class="fa fa-file-image-o"></i></span>
+                              <input type="hidden" name="photo" id="productImageUrl">
+                              <input type="file" class="" id="imagePath" required>
+                         </div>
+                         <div class="file-path-wrapper">
+                              <input type="text" placeholder="Upload slider image" class="file-path validate" id="">
+                         </div>
+                    </div>
+                    <div class="input-field col s12 l7">
+                         <p id="uploadLabel"></p>
+                         <img src="" id="imgTag" class="responsive-img materialboxed" alt="">
+                    </div>
+               </div>
+               <div class="row">
+                    <button class="col s12 l6 offset-l6 btn admin-blue-background" id="create-slider">
+                         Upload slider
+                    </button>
+               </div>
+          </form>
+     </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+
+<script>
+     const firebaseConfig = {
+     apiKey: "AIzaSyDGfHWWbWzkYv9_c1f7bymoDJYVOchWvgI",
+     authDomain: "takeaways-e-commerce.firebaseapp.com",
+     databaseURL: "https://takeaways-e-commerce.firebaseio.com",
+     projectId: "takeaways-e-commerce",
+     storageBucket: "takeaways-e-commerce.appspot.com",
+     messagingSenderId: "446467368620",
+     appId: "1:446467368620:web:995f021690577d6a356109",
+     measurementId: "G-5SVE2Z2D2M"
+     };
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig)
+
+     var storage = firebase.storage()
+
+     // First image handle
+     const image = document.getElementById('imagePath')
+     const imageShowcase = document.getElementById('imgTag')
+     const uploadLabel = document.getElementById('uploadLabel')
+     const submitButton = document.getElementById('create-slider')
+     const productImageUrl = document.getElementById('productImageUrl')
+                    submitButton.disabled = true
+     function firstImageUplaod(e){
+          uploadLabel.innerHTML = "Please wait for uploading slider, don't click upload till image displayed"
+          selectedFile = e.target.files[0]
+          storage.ref().child(selectedFile.name).put(selectedFile)
+               .then(data=>{
+                    return data.ref.getDownloadURL()
+               })
+               .then(url => {
+                    uploadLabel.innerHTML = 'uploaded'
+                    imageShowcase.src = url
+                    productImageUrl.value = url
+                    submitButton.disabled = false
+               })
+     }
+
+     document.querySelector('#imagePath').addEventListener('change', firstImageUplaod)
+
+</script>

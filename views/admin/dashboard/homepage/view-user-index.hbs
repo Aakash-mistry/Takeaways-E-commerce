@@ -1,0 +1,93 @@
+<div class="heading-2" style="margin-top: 30px; margin-bottom: 30px">
+     Hey admin you can manage your user landing page from here
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{{#if messages}}
+<script>
+     swal("Your landing page will take effect sortly....", "{{messages}}", "success");
+</script>
+{{/if}}
+
+{{#if error}}
+<script>
+     swal("Please try again server facing some issue", "{{error}}", "error");
+</script>
+{{/if}}
+
+<div class="heading left">
+     Carousel images & details
+
+</div>
+<div class="right" style="margin-right: 20px;">
+     <a href="/admin/create-carousel" class="btn admin-blue-background">
+         <i class="material-icons left">add</i> Create New Slider
+     </a>
+</div>
+{{#if sliderLength}}
+     <div class="row" style="margin-top: 100px!important;">
+     {{#each slider}}
+          <div class="col s12 l3">
+               <div style="padding: 10px;">
+               <img src="{{this.sliderImage}}" class="responsive-img" alt="">
+               <div class="slider-title truncate">
+                    {{this.caption}}
+               </div>
+               <div class="grey-text truncate">
+                    <p>{{this.captionDescription}}</p>
+               </div>
+               <div class="truncate">
+                    Redirection link - {{this.reDirectionLink}}
+               </div>
+               <div style="margin-top: 10px;margin-bottom: 10px;">
+                    <div class="row" style="margin-bottom: 0px!important;">
+                         <div class="col s6 center">
+                              <a href="/admin/edit/slider/{{this._id}}" class="btn admin-blue-background">
+                                   <i class="material-icons">edit</i>
+                              </a>
+                         </div>
+                         <div class="col s6 center">
+                              <form action="/admin/delete/slider/{{this._id}}" method="POST">
+                                   <button type="submit" class="btn red">
+                                        <i class="material-icons">delete</i>
+                                   </button>
+                              </form>
+                         </div>
+                    </div>
+               </div>
+               </div>
+          </div>
+     {{/each}}
+     </div>
+
+{{else}}
+<div class="center" style="margin-top: 30px; margin-bottom: 30px;">
+     <h5>
+          No slider is uploaded by you
+     </h5>
+     <a href="/admin/create-carousel">Start uploading...</a>
+</div>
+{{/if}}
+
+<hr>
+
+<div class="heading">
+     Offer zones
+</div>
+
+<div class="heading">
+     Display categories slider on homepage
+</div>
+{{#if categorySliderLength}}
+     {{#each categorySlide}}
+          {{this.productCategoryId.name}}
+     {{/each}}
+     <a href="/admin/create-product-slider">New</a>
+{{else}}
+<div class="center" style="margin-top: 30px; margin-bottom: 30px;">
+     <h5>
+          No product carousel is uploaded by you
+     </h5>
+     <a href="/admin/create-product-slider">Start uploading...</a>
+</div>
+{{/if}}

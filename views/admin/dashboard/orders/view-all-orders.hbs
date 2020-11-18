@@ -1,0 +1,96 @@
+{{#if receivedOrderLength}}
+<div class="admin-heading-2 center-align">
+     {{receivedOrderLength}} orders is received by now
+</div>
+
+{{#if messages}}
+<script>
+     swal({
+          title: "{{this.messages}}",
+          icon: "success",
+     });
+</script>
+{{/if}}
+
+<div class="row" style="margin-top: 100px; margin-bottom: 100px!important;">
+     <div class="col s12 m12 " style="padding: 20px;">
+          {{!-- Order table starts --}}
+          <div class="row">
+               <div id="man" class="col s12">
+                    <div class="card material-table z-depth-0">
+                         <div class="table-header">
+                              <span class="table-title "><i class="material-icons left admin-blue-text">inbox</i>
+                                   Orders</span>
+                              <div class="actions center">
+                                   <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i
+                                             class="material-icons admin-blue-text left">search</i> Search orders</a>
+                              </div>
+                         </div>
+                         <table id="datatable" class="responsive-table display centered">
+                              <thead>
+                                   <tr>
+                                        <th class="admin-blue-text">CUSTOMER NAME</th>
+                                        <th class="admin-blue-text">CONTACT / EMAIL</th>
+                                        <th class="admin-blue-text">ORDERED QUANTITY</th>
+                                        <th class="admin-blue-text">ORDERED TOTAL PRICE</th>
+                                        <th class="admin-blue-text">CUSTOMER ADDRESS</th>
+                                        <th class="admin-blue-text">ORDER STATUS</th>
+                                        <th class="admin-blue-text">ORDERED DATE</th>
+                                        <th class="admin-blue-text">PAYMENT MODE</th>
+                                        <th class="admin-blue-text">SEE ORDER DETAILS / Del.</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   {{#each receivedOrder}}
+                                   <tr>
+                                        <td style="text-transform: capitalize;">{{this.customerName}}</td>
+                                        <td>
+                                             <div>
+                                                  {{this.customerNumber}}
+                                             </div>
+                                             <div>
+                                                  {{this.customerEmail}}
+                                             </div>
+                                        </td>
+                                        <td>{{this.totalQty}}</td>
+                                        <td>₹ {{this.payableAmount}}</td>
+                                        <td style="text-transform: capitalize;">{{this.customerAddress}} {{this.pincode}}</td>
+                                        <td style="text-transform: capitalize;">{{this.orderStatus}}</td>
+                                        <td>{{this.createdAt}}</td>
+                                        <td>COD</td>
+                                        <td class="row">
+                                             <div class="col s6 m12 l6">
+                                                  <a href="/admin/view-order-details/{{this._id}}"
+                                                       class="btn btn-small white-text admin-blue-background"
+                                                       target="_blank">
+                                                       details
+                                                  </a>
+                                             </div>
+                                               <div class="col s6 m12 l6">
+                                                    <form action="/admin/delete/delete-this-orders/{{this._id}}" method="post">
+                                                       <button type="submit" class="btn transparent red-text">
+                                                            <i class="material-icons">delete</i>
+                                                       </button>
+                                                  </form>
+                                               </div>
+                                        </td>
+                                   </tr>
+                                   {{/each}}
+                              </tbody>
+                         </table>
+                    </div>
+               </div>
+          </div>
+          {{!-- orders data table ends --}}
+     </div>
+</div>
+{{else}}
+<div class="admin-heading-2">
+     No category uploaded
+</div>
+<div class="center" style="margin-bottom: 50px;">
+     <a href="/admin/create-taglist" class="btn admin-blue-background">
+          Create first category
+     </a>
+</div>
+{{/if}}

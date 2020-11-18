@@ -1,0 +1,71 @@
+<div class="container">
+     <div class="profile-container">
+          <div class="row">
+               <div class="col s12 l4 hide-on-med-and-down">
+                    <div class="white profile-links">
+                         <ul class="collection">
+                              <li class="collection-item profile-links-items"><i class="material-icons left theme-blue-text">account_box</i> My Profile</li>
+                              <li class="collection-item profile-links-items"><i class="material-icons left theme-blue-text">inbox</i> My Order </li>
+                              <li class="collection-item profile-links-items"><i class="material-icons left theme-blue-text">directions</i> Manage Address</li>
+                              <li class="collection-item profile-links-items"><i class="material-icons left theme-blue-text">help</i> Help center</li>
+                              <li class="collection-item profile-links-items"><i class="material-icons left theme-blue-text">priority_high</i> Frequently Ask Questions</li>
+                              <li class="collection-item profile-links-items"><i class="material-icons left theme-blue-text">phone</i> Contact us</li>
+                         </ul>
+                    </div>
+               </div>
+               <div class="col s12 l8">
+                    <div class="white profile-section">
+                         <div class="main-profile-section">
+                              <div class="profile-heading hide-on-med-and-down">
+                                   <span class="theme-blue-text">{{user.lastname}} {{user.firstname}} </span> Profile
+                              </div>
+
+                              <div class="profile-heading-mobile hide-on-large-only">
+                                   {{user.lastname}} {{user.firstname}} Profile
+                              </div>
+
+                              <div class="profile-form">
+                                   <div class="row">
+                                        <form class="col s12">
+                                             <div class="row">
+                                                  <div class="input-field col s6">
+                                                       <input value="{{user.firstname}}" id="first_name" type="text" class="validate">
+                                                       <label for="first_name">First Name</label>
+                                                  </div>
+                                                   <div class="input-field col s6">
+                                                       <input value="{{user.lastname}}" id="last_name" type="text" class="validate">
+                                                       <label for="last_name">Last Name</label>
+                                                  </div>
+                                             </div>
+
+                                             <div class="row">
+                                                  <div class="input-field col s12">
+                                                       <input value="{{user.mobile}}" id="mobile" type="number" class="validate">
+                                                       <label for="mobile">mobile</label>
+                                                  </div>
+                                             </div>
+
+                                             <div class="row">
+                                                  <div class="input-field col s12">
+                                                       <input value="{{user.email}}" id="mobile" type="email" class="validate">
+                                                       <label for="email">email</label>
+                                                  </div>
+                                                  <a href="#change-profile">Change account password</a>
+                                             </div>
+
+                                             <div class="row">
+                                                  <div class="input-field">
+                                             <button type="submit" class="btn col s12">
+                                                  Change profile
+                                             </button>
+                                                  </div>
+                                             </div>
+                                        </form>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>

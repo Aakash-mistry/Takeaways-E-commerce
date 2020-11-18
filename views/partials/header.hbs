@@ -1,0 +1,232 @@
+{{#if login}}
+     {{#if user.isAdmin}}
+     {{!-- Admin login navbar --}}
+          <nav class="navbar-2">
+                     <a href="#" data-target="admin-sidenav" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+               <a href="/" class="brand-logo">
+                    Takeaways
+               </a>
+               <ul class="right hide-on-med-and-down">
+                    <li><a href="/admin-profile" style="text-transform: uppercase;"> {{user.email}}</a></li>
+                     <li><a href="/admin/logout">Disconnect</a></li>
+               </ul>
+          </nav>
+          <ul id="admin-sidenav" class="sidenav">
+               <li>
+                    <div class="user-view">
+                         <div class="background" style="background-size: cover!important;">
+                              <img src="/images/admin-background.jpg" class="responsive-img" style="background-size: cover;">
+                         </div>
+                              <a href="#user"><img class="circle" src="https://materializecss.com/images/yuna.jpg"></a>
+                              <a href="#name"><span class="black-text name">
+                                   {{user.firstname}}
+                              </span></a>
+                              <a href="#email"><span class="black-text email">{{user.email}}</span></a>
+                    </div>
+               </li>
+                    <ul class="collapsible">
+                         <li>
+                              <div class="collapsible-header"><i class="material-icons admin-blue-text">dashboard</i>
+                              <a href="/admin/dashboard" class="black-text">Dashboard</a>
+                              </div>
+                         </li>
+                         <li>
+                              <div class="collapsible-header"><i class="fa fa-newspaper-o admin-blue-text" style="font-size: 20px;"></i>Index design</div>
+                              <div class="collapsible-body">
+                                   <span>
+                                        <ul>
+                                             <li><a href="/admin/view-users-homepage">View page details</a></li>
+                                        </ul>
+                                   </span>
+                              </div>
+                         </li>
+                         <li>
+                              <div class="collapsible-header"><i class="fa fa-archive admin-blue-text" style="font-size: 20px;"></i>Listing (products)</div>
+                              <div class="collapsible-body">
+                                   <span>
+                                        <ul>
+                                             <li><a href="/admin/create-listing">Create listing</a></li>
+                                             <li><a href="/admin/view-listing">View listing</a></li>
+                                        </ul>
+                                   </span>
+                              </div>
+                         </li>
+                         <li>
+                         <div class="collapsible-header"><i class="material-icons admin-blue-text">tag</i>Tags (categories)</div>
+                         <div class="collapsible-body">
+                              <span>
+                                   <ul>
+                                        <li><a href="/admin/create-taglist">Create taglist</a></li>
+                                        <li><a href="/admin/view-taglist">View taglist</a></li>
+                                   </ul>
+                              </span>
+                         </div>
+                         </li>
+                         <li>
+                              <div class="collapsible-header"><i class="material-icons admin-blue-text">inbox</i>Orders</div>
+                              <div class="collapsible-body"><span>
+                                   <ul>
+                                        <li><a href="/admin/view-all-orders">View all orders</a></li>
+                                   </ul>
+                              </span></div>
+                         </li>
+                         <li>
+                              <div class="collapsible-header"><i class="material-icons admin-blue-text">account_box</i>Customers</div>
+                              <div class="collapsible-body"><span>
+                                   <ul>
+                                        <li><a href="#users-details">User customers</a></li>
+                                        <li><a href="#active-users">Active customers</a></li>
+                                        <li><a href="#blocked-users">Blocked customer</a></li>
+                                        <li><a href="#view-user-by-purchases">View customers by max orders</a></li>
+                                   </ul>
+                              </span></div>
+                         </li>
+                         <li>
+                              <div class="collapsible-header"><i class="fa fa-money admin-blue-text"></i>Payment</div>
+                              <div class="collapsible-body"><span>
+                                   <ul>
+                                        <li><a href="#link-1">Link 1</a></li>
+                                        <li><a href="#link-2">Link 2</a></li>
+                                        <li><a href="#link-3">Link 3</a></li>
+
+                                   </ul>
+                              </span></div>
+                         </li>
+                         <li class="divider"></li>
+                         <li><a class="subheader">Admin account management</a></li>
+                         <li><a href="/admin/admin-profile"><i class="material-icons theme-blue-text">local_florist</i> Manage admin profile</a></li>
+                         <li><a href="/admin/logout" class="red-text"><i class="material-icons red-text">power_settings_new</i> Disconnect</a></li>
+                    </ul>
+          </ul>
+          {{else}}
+          {{!-- customer login navbar --}}
+<nav class="navbar">
+     <div class="nav-wrapper">
+          <a href="/" class="brand-logo left">Takeaways</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+          <a href="#search" class="modal-trigger hide-on-large-only right"><i class="material-icons">search</i></a>
+          <a href="/my-cart" class="modal-trigger hide-on-large-only right"><i class="material-icons mobile-icon">shopping_cart</i></a>
+          <ul class="right hide-on-med-and-down">
+               <li><a href="#search" class="navlinks modal-trigger"><i class="material-icons">search</i></a></li>
+               <li><a href="/my-cart" class="navlinks"><i class="material-icons">shopping_cart</i></a></li>
+               <li><a href="#" class="navlinks"><i class="fa fa-tag left"></i> Categories</a></li>
+               <li><a class="navlinks dropdown-trigger" data-target="account_link">{{user.firstname}} <i class="material-icons right">keyboard_arrow_down</i></a></li>
+               <li><a href="#" class="navlinks dropdown-trigger" data-target="more_links">More <i class="material-icons right">keyboard_arrow_down</i></a></li>
+          </ul>
+     </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+     <li><a href="/"><i class="material-icons left theme-blue-text">home</i> Home</a></li>
+     <li><a href="/my-cart"><i class="material-icons left theme-blue-text">shopping_cart</i> Shopping cart</a></li>
+     <li><a href="#search" class="modal-trigger"><i class="material-icons left theme-blue-text">search</i> Search</a></li>
+     <li><a class="subheader">Account</a></li>
+     <li><a href="#my-order" class="black-text"><i class="material-icons left theme-blue-text">inbox</i> Previous orders</a></li>
+     <li><a href="#my-address" class="black-text"><i class="material-icons left theme-blue-text">location_city</i> Saved addresses</a></li>
+     <li><a href="/my-profile"><i class="fa fa-user left theme-blue-text" style="font-size: 20px;"></i> Manage profile</a></li>
+     <li><a href="/logout"><i class="fa fa-sign-out left theme-blue-text" style="font-size: 20px;"></i> Logout</a></li>
+     <li><a class="subheader">Other Links</a></li>
+     <li><a href="#"><i class="material-icons left theme-blue-text">inbox</i> How we sell?</a></li>
+     <li><a href="#"><i class="material-icons left theme-blue-text">info</i> About us</a></li>
+     <li><a href="#"><i class="material-icons left theme-blue-text">phone</i> Contact us</a></li>
+</ul>
+
+     {{!-- account link dropdown --}}
+     <ul id="account_link" class="dropdown-content">
+          <li><a href="#my-order" class="black-text"><i class="material-icons left theme-blue-text">inbox</i> Manage orders</a></li>
+          <li><a href="#my-address" class="black-text"><i class="material-icons left theme-blue-text">location_city</i> Manage addresses</a></li>
+          <li><a href="/my-profile" class="black-text"><i class="material-icons left theme-blue-text">account_circle</i> Manage Profile</a></li>
+          <li><a href="/logout" class="black-text"><i class="material-icons left theme-blue-text">power_settings_new</i> Logout</a></li>
+     </ul>
+      {{!-- more  link dropdown --}}
+     <ul id='more_links' class='dropdown-content'>
+          <li><a href="#!" class="black-text"><i class="fa fa-question left theme-blue-text" style="font-size: 20px;"></i> How we sell?</a></li>
+          <li><a href="#!" class="black-text"><i class="fa fa-info-circle left theme-blue-text"style="font-size: 20px;"></i> About us?</a></li>
+          <li><a href="#!" class="black-text"><i class="fa fa-phone left theme-blue-text"style="font-size: 20px;"></i> Countact us?</a></li>
+     </ul>
+     {{!-- search modal --}}
+     <div id="search" class="modal bottom-sheet">
+          <div class="modal-content ">
+               <h4 class="center">Search</h4>
+               <nav class="navbar z-depth-0" style="margin-top: 50px; margin-bottom: 50px;">
+                    <div class="nav-wrapper">
+                         <form>
+                              <div class="input-field">
+                                   <input id="search" placeholder="category or product name" type="search" required>
+                                   <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
+                                   <i class="material-icons">close</i>
+                              </div>
+                         </form>
+                    </div>
+               </nav>
+          </div>
+          <div class="modal-footer">
+               <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+          </div>
+     </div>
+     {{/if}}
+{{else}}
+
+{{!-- if no one is login show this navbar --}}
+<div class="navbar-fixed">
+     <nav class="navbar">
+          <div class="nav-wrapper">
+                    <a href="/" class="brand-logo left">Takeaways</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                    <a href="#search" class="modal-trigger hide-on-large-only right"><i class="material-icons">search</i></a>
+                    <a href="/my-cart" class="hide-on-large-only right"><i class="material-icons mobile-icon">shopping_cart</i></a>
+               <ul class="right hide-on-med-and-down">
+                    <li><a href="#search" class="navlinks modal-trigger"><i class="material-icons">search</i></a></li>
+                    <li><a href="/my-cart" class="navlinks"><i class="material-icons">shopping_cart</i></a></li>
+                    <li><a href="#" class="navlinks"><i class="fa fa-tag left"></i> Categories</a></li>
+                    <li><a class="navlinks dropdown-trigger" data-target="account_link">Account <i class="material-icons right">keyboard_arrow_down</i></a></li>
+                    <li><a href="#" class="navlinks dropdown-trigger" data-target="more_links">More <i class="material-icons right">keyboard_arrow_down</i></a></li>
+               </ul>
+          </div>
+     </nav>
+</div>
+
+     <ul class="sidenav" id="mobile-demo">
+          <li><a href="/"><i class="material-icons left theme-blue-text">home</i> Home</a></li>
+          <li><a href="/my-cart"><i class="material-icons left theme-blue-text">shopping_cart</i> Shopping cart</a></li>
+          <li><a href="#search" class="modal-trigger"><i class="material-icons left theme-blue-text">search</i> Search</a></li>
+          <li><a class="subheader">Account</a></li>
+          <li><a href="/login"><i class="fa fa-sign-in left theme-blue-text" style="font-size: 20px;"></i> Login to your account</a></li>
+          <li><a href="/register"><i class="fa fa-user-plus left theme-blue-text" style="font-size: 20px;"></i> Not have an account?</a></li>
+          <li><a class="subheader">Other Links</a></li>
+          <li><a href="#"><i class="material-icons left theme-blue-text">inbox</i> How we sell?</a></li>
+          <li><a href="#"><i class="material-icons left theme-blue-text">info</i> About us</a></li>
+          <li><a href="#"><i class="material-icons left theme-blue-text">phone</i> Contact us</a></li>
+     </ul>
+     {{!-- more  link dropdown --}}
+     <ul id='more_links' class='dropdown-content'>
+          <li><a href="#!" class="black-text"><i class="fa fa-question left theme-blue-text"></i> How we sell?</a></li>
+          <li><a href="#!" class="black-text"><i class="fa fa-info-circle left theme-blue-text"></i> About us?</a></li>
+          <li><a href="#!" class="black-text"><i class="fa fa-phone left theme-blue-text"></i> Countact us?</a></li>
+     </ul>
+     {{!-- account link dropdown --}}
+     <ul id="account_link" class="dropdown-content">
+          <li><a href="/login" class="black-text">Login to your account</a></li>
+          <li><a href="/register" class="black-text">Create new account</a></li>
+     </ul>
+     {{!-- search modal --}}
+     <div id="search" class="modal bottom-sheet">
+          <div class="modal-content ">
+               <h4 class="center">Search</h4>
+               <nav class="navbar z-depth-0" style="margin-top: 50px; margin-bottom: 50px;">
+                    <div class="nav-wrapper">
+                         <form>
+                              <div class="input-field">
+                                   <input id="search" placeholder="category or product name" type="search" required>
+                                   <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
+                                   <i class="material-icons">close</i>
+                              </div>
+                         </form>
+                    </div>
+               </nav>
+          </div>
+          <div class="modal-footer">
+               <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+          </div>
+     </div>
+{{/if}}

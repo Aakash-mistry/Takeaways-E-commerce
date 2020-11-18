@@ -1,0 +1,66 @@
+<div class="container login-container">
+     <div class="row">
+          <div class="col s12 hide-on-large-only theme-blue">
+               <div class="row" style="padding: 5px!important;">
+                    <div class="col s6 center">
+                         <div class="black-text white-text left-text-2">
+                              Login to your account
+                         </div>
+                    </div>
+                    <div class="col s6 center">
+                         <img src="/images/svg/mobile-login.svg" class="img-responsive" width="150" alt="">
+                    </div>
+               </div>
+          </div>
+           <div class="left-paragraph grey-text text-darken-2 hide-on-large-only" style="padding: 10px;">
+                    Order product, track orders and get access to your product
+               </div>
+          <div class="col s12 m3 l3 login-left-side theme-blue hide-on-med-and-down">
+               <div class="left-text">
+                    Login
+               </div>
+               <div class="left-paragraph">
+                    Order product, track orders and get access to your product
+               </div>
+               <div class="left-side-image-area center">
+                    <img src="/images/svg/shopping-cart.svg" width="150" class="img-responsive" alt="shopping online">
+               </div>
+          </div>
+          <div class="col s12 l9 login-form">
+               <div class="row">
+                    <form class="col s12"style="margin-top: 50px;" action="/customer-login" method="POST">
+                         <div class="row">
+                              <div class="input-field col s12">
+                                   <input id="mobile" name="mobile" type="number" class="validate">
+                                   <label for="mobile">Enter Mobile Number</label>
+                              </div>
+                         </div>
+                          <div class="row">
+                              <div class="input-field col s12">
+                                   <input id="password" name="password" type="password" class="validate">
+                                   <label for="password">Enter Password</label>
+                                   <a href="#forgot" class="right">Forgot password?</a>
+                              </div>
+                         </div>
+                         <span class="red-text">
+                              {{#if messages}}
+                                   {{this.messages}}
+                              {{/if}}
+                         </span>
+                         <div class="row login-button">
+                              <div>
+                                   <button type="submit" class="btn green waves-effect waves-light input-field col s12">
+                                        Login to your account
+                                   </button>
+                                   <div style="margin-top: 30px;">
+                                        <a href="/register" class="btn theme-blue col s12">
+                                        Not have an account?
+                                        </a>
+                                   </div>
+                              </div>
+                         </div>
+                    </form>
+               </div>
+          </div>
+     </div>
+</div>

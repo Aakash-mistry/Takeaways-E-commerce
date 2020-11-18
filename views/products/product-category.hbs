@@ -1,0 +1,108 @@
+<ul class="breadcrumb">
+     <li><a href="#">Home</a></li>
+     <li><a href="#">Products</a></li>
+     <li class="black-text"><a href="/View-all-products">View all products</a></li>
+     <li class="black-text" style="text-transform:capitalize;">{{categorySelected.name}}</li>
+</ul>
+
+{{#if latestProductLength}}
+<div class="row">
+     <div class="col s12 l2">
+          <div class="z-depth-1 all-product-filter-side">
+               {{#if categoriesLength}}
+               <ul>
+                    <h5>Categories</h5>
+                    {{#each category}}
+                    <li style="margin-top: 5px!important;">
+                         <a href="/category/{{this._id}}" class="all-products-categories theme-blue-text">
+                              {{this.name}}
+                         </a>
+                    </li>
+                    {{/each}}
+               </ul>
+               {{/if}}
+               <ul style="margin-top: 100px;">
+               <h5>Filters</h5>
+                    <li style="margin-top: 5px!important;">
+                         <a href="/view-all-products" class="all-products-filters theme-blue-text">
+                              Newer first
+                         </a>
+                    </li>
+
+                    <li style="margin-top: 5px!important;">
+                         <a href="/view-all-products?filter=low-to-high" class="all-products-filters theme-blue-text">
+                              Price - low to high
+                         </a>
+                    </li>
+                    <li style="margin-top: 5px!important;">
+                         <a href="/view-all-products?filter=high-to-low" class="all-products-filters theme-blue-text">
+                              Price - high to low
+                         </a>
+                    </li>
+               </ul>
+          </div>
+     </div>
+     <div class="col s12 l10">
+          <div class="z-depth-1 all-product-product-side">
+               <div class="heading">
+                    {{categorySelected.name}}
+               </div>
+               <div class="row">
+                    {{#each products}}
+                    <div class="col s12 l3">
+                         <div class="product-slider-column hoverable">
+                              <div class="slider-product-image center-align">
+                              <a href="/product/{{this._id}}" target="_blank">
+                                   <img src="{{this.image1}}"  class="responsive-img"
+                                   {{#if imageWidth1}}
+                                   width="{{this.imageWidth1}}"
+                                   {{else}}
+                                   width="150"
+                                   {{/if}}
+                                   alt="image" />
+                              </a>
+                              </div>
+                              <div class="product-title truncate">
+                                   <a href="/product/{{this._id}}" target="_blank" class="black-text">
+                                   {{this.title}}
+                                   </a>
+                              </div>
+                              <span class="grey-text" style="font-weight: 700;">
+                                   {{this.category.name}}
+                              </span>
+                              <div class="row">
+                                   <div class="col s12 left-align">
+                                        <div class="real-price">
+                                             <span>₹ {{this.realPrice}} /-</span>
+                                             &emsp;
+                                             <span class="grey-text lighten-2">
+                                                  <strike>
+                                                       ₹ {{this.fakePrice}} /-
+                                                  </strike>
+                                             </span>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="row">
+                                   <div class="right-align add-to-cart-btn">
+                                        <a href="/add-to-cart/{{this._id}}" class="btn col s12 orange darken-3 center-align">
+                                        <i class="left material-icons">add_shopping_cart</i>
+                                        Add to cart
+                                        </a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    {{/each}}
+               </div>
+          </div>
+     </div>
+</div>
+{{else}}
+     <div class="heading center" style="margin-top: 50px;margin-bottom: 10px">
+          No products of category <span class="theme-blue-text">{{categorySelected.name}}</span> is uploaded
+     </div>
+     <div class="center" style="margin-bottom: 50px">
+          <a href="/" class="btn orange darken-3 btn-large">Go back</a>
+     </div>
+{{/if}}

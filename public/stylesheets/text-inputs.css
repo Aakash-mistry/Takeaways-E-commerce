@@ -1,0 +1,104 @@
+.input-field label {
+    color: #000;
+}
+
+.input-field input[type=text]:focus+label {
+    color: #0275df!important;
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #0275df!important;
+    box-shadow: 0 1px 0 0 #0275df!important;
+}
+
+.input-field input[type=email]:focus+label {
+    color: #0275df!important;
+}
+
+.input-field input[type=email]:focus {
+    border-bottom: 1px solid #0275df!important;
+    box-shadow: 0 1px 0 0 #0275df!important;
+}
+
+.input-field input[type=number]:focus+label {
+    color: #0275df!important;
+}
+
+.input-field input[type=number]:focus {
+    border-bottom: 1px solid #0275df!important;
+    box-shadow: 0 1px 0 0 #0275df!important;
+}
+
+.input-field input[type=password]:focus+label {
+    color: #0275df!important;
+}
+
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid #0275df!important;
+    box-shadow: 0 1px 0 0 #0275df!important;
+}
+
+.input-field textarea:focus+label {
+    color: #0275df!important;
+}
+
+.input-field textarea:focus {
+    border-bottom: 1px solid #0275df!important;
+    box-shadow: 0 1px 0 0 #0275df!important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield!important;
+}
+
+/* Chart css */
+
+@keyframes chartjs-render-animation {
+	from { opacity: 0.99; }
+	to { opacity: 1; }
+}
+
+.chartjs-render-monitor {
+	animation: chartjs-render-animation 0.001s;
+}
+
+/*
+ * DOM element resizing detection
+ * https://github.com/marcj/css-element-queries
+ */
+.chartjs-size-monitor,
+.chartjs-size-monitor-expand,
+.chartjs-size-monitor-shrink {
+	position: absolute;
+	direction: ltr;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	pointer-events: none;
+	visibility: hidden;
+	z-index: -1;
+}
+
+.chartjs-size-monitor-expand > div {
+	position: absolute;
+	width: 1000000px;
+	height: 1000000px;
+	left: 0;
+	top: 0;
+}
+
+.chartjs-size-monitor-shrink > div {
+	position: absolute;
+	width: 200%;
+	height: 200%;
+	left: 0;
+	top: 0;
+}

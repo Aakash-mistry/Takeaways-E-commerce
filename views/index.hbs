@@ -1,0 +1,105 @@
+{{!-- Slider area starts --}}
+<div class="slider">
+     {{#if sliderLength}}
+     <ul class="slides">
+          {{#each slider}}
+          <li>
+               <a target="__blank" href="/{{this.reDirectionLink}}">
+                    <img src="{{this.sliderImage}}" alt="image"> <!-- random image -->
+                    <div class="caption {{this.animationName}}">
+                         <h3 class="{{this.captionColour}}">{{this.caption}}</h3>
+                         <h5 class="light {{this.captionColour}} text-lighten-3">{{this.captionDescription}}</h5>
+                    </div>
+               </a>
+          </li>
+          {{/each}}
+     </ul>
+     {{/if}}
+</div>
+{{!-- Slider area ends --}}
+
+{{!-- first section --}}
+{{#if productLength}}
+<div class="product-container">
+     <div class="row">
+          <div class="col s8 l6 left">
+               <div class="heading">
+                    Latest product
+               </div>
+          </div>
+          <div class="col s4 l6 right-align">
+               <a href="/view-all-products?filter=latest-products"
+                    class="btn btn-small z-depth-0 orange darken-3 theme-btn">
+                    see all
+               </a>
+          </div>
+     </div>
+     <div class="row" style="margin-top: 30px!important;">
+          {{#each product}}
+          <div class="col s6 m4 l3">
+               <div class="product-slider-column hoverable">
+                    <div class="slider-product-image center-align">
+                         <a href="/product/{{this._id}}">
+                              <img src="{{this.image1}}" class="responsive-img lazyOwl" {{#if imageWidth1}}
+                                   width="{{this.imageWidth1}}" {{else}} width="150" {{/if}} alt="image" />
+                         </a>
+                    </div>
+                    <div class="product-title truncate">
+                         <a href="/product/{{this._id}}" target="_blank" class="black-text">
+                              {{this.title}}
+                         </a>
+                    </div>
+                    <span class="grey-text" style="font-weight: 700;">
+                         {{this.category.name}}
+                    </span>
+                    <div class="row">
+                         <div class="col s12 left-align">
+                              <div class="real-price">
+                                   <span>₹ {{this.realPrice}} /-</span>
+                                   &emsp;
+                                   <span class="grey-text lighten-2">
+                                        <strike>
+                                             ₹ {{this.fakePrice}} /-
+                                        </strike>
+                                   </span>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="right-align add-to-cart-btn">
+                              <a href="/add-to-cart/{{this._id}}" class="btn col s12 orange darken-3 center-align">
+                                   <i class="left material-icons">add_shopping_cart</i>
+                                   Add to cart
+                              </a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          {{/each}}
+     </div>
+</div>
+{{/if}}
+{{!-- first section ends --}}
+
+{{!-- Admin section --}}
+<div class="row">
+     <div class="col s12 m12 l4" style="margin-top: 20px;">
+          <img src="https://media.nichebeautylab.com/themes/child_niche/assets/img/front/slides/banner_acnemy_D.jpg"
+               class="responsive-img materialboxed" data-caption="Hello this is some captions about this images"
+               width="500" alt="image">
+     </div>
+     <div class="col s12 m12 l4" style="margin-top: 20px;">
+          <img src="https://media.nichebeautylab.com/themes/child_niche/assets/img/front/slides/banner_acnemy_D.jpg"
+               class="responsive-img" width="500" alt="">
+     </div>
+     <div class="col s12 m12 l4" style="margin-top: 20px;">
+          <img src="https://media.nichebeautylab.com/themes/child_niche/assets/img/front/slides/banner_acnemy_D.jpg"
+               class="responsive-img" width="500" alt="">
+     </div>
+</div>
+{{!-- Admin section ends --}}
+
+
+{{!-- Category slider here --}}
+
+{{!-- Category slider ends --}}

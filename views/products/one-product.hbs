@@ -1,0 +1,164 @@
+<div class="container-fluid" style="padding: 30px;">
+     <div class="row">
+          <div class="col s12 l5">
+
+               <div class="row">
+                    <div class="col s3 l2 center" style="margin-top: 25px;">
+                         <img src="{{product.image1}}" class="responsive-img thumbnail actives" alt="">
+                         <img src="{{product.image2}}" class="responsive-img thumbnail" alt="">
+                         <img src="{{product.image3}}" class="responsive-img thumbnail" alt="">
+                    </div>
+                    <div class="col s9 l10 center">
+                         <img src="{{product.image1}}" class="responsive-img materialboxed" id="product-images" alt="{{this.title}}">
+                    </div>
+               </div>
+
+          </div>
+          <div class="col s12 l7">
+
+               <div class="title-section">
+                    <div class="product-name">
+                         {{product.title}}
+                    </div>
+
+                    <div class="product-category" style="margin-top: 30px;">
+                         {{product.category.name}}
+                    </div>
+
+                    <div class="product-price" style="margin-top: 30px;">
+                         <div class="row">
+                              <div class="col s12 l6">
+
+                                   <div class="row">
+                                        <div class="col s4 l4">
+                                             <h5>
+                                                  ₹ {{product.realPrice}} /-
+                                             </h5>
+                                        </div>
+                                        <div class="col s5 l5" style="margin-top: 10px;">
+                                              <h6>
+                                                  <strike class="grey-text">
+                                                       ₹ {{product.fakePrice}} /-
+                                                  </strike>
+                                             </h6>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="product-price-add-cart">
+                         <div class="row">
+                              <div class="center">
+                                   <a href="/add-to-cart/{{product._id}}" class="btn col s12 l6 theme-blue">
+                                        <i class="material-icons">add_shopping_cart</i>
+                                   </a>
+                              </div>
+                         </div>
+                    </div>
+
+               </div>
+
+               <div class="divider"></div>
+               <div class="notices">
+                    <ul class="collapsible notice-collapsible z-depth-0" style="margin-top: 25px;">
+                         {{#if product.whenToUse}}
+                         <li>
+                              <div class="collapsible-header notice-header">
+                                   <i class="material-icons left">add</i> When to use it?
+                               </div>
+                              <div class="collapsible-body notice-body">
+                                   <p style="white-space: pre-wrap;
+                                             overflow-wrap: break-word;">{{product.whenToUse}}</p>
+                              </div>
+                         </li>
+                         {{/if}}
+                         {{#if product.howToUse}}
+                         <li>
+                              <div class="collapsible-header notice-header">
+                                   <i class="material-icons left">add</i>
+                                   How to use?</div>
+                              <div class="collapsible-body">
+                                   <p style="white-space: pre-wrap;
+                                             overflow-wrap: break-word;">{{product.howToUse}}</p>
+                              </div>
+                         </li>
+                         {{/if}}
+                         {{#if product.warnings}}
+                         <li>
+                              <div class="collapsible-header notice-header">
+                                   <i class="material-icons left">add</i>
+                                   Warnings</div>
+                              <div class="collapsible-body">
+                                   <p style="white-space: pre-wrap;
+                                             overflow-wrap: break-word;">{{product.warnings}}</p>
+                              </div>
+                         </li>
+                         {{/if}}
+
+                         {{#if product.ingredients}}
+                         <li>
+                              <div class="collapsible-header notice-header">
+                                   <i class="material-icons left">add</i>
+                                        Ingradients
+                                   </div>
+                              <div class="collapsible-body">
+                                   <p style="white-space: pre-wrap;
+                                             overflow-wrap: break-word;">{{product.ingredients}}</p>
+                              </div>
+                         </li>
+                         {{/if}}
+                    </ul>
+               </div>
+
+          </div>
+
+     </div>
+
+     <div class="description-section">
+          <div class="row">
+               <div class="col s12 l7" style="margin-top: 50px;">
+                    <div class="row">
+                         <div class="col l3 s12 center">
+                              <h6 style="font-weight: 700;">Description</h6>
+                         </div>
+                         <div class="col l9 s12">
+                              <p class="paragraph">
+                                   {{product.productDescription}}
+                              </p>
+                         </div>
+                    </div>
+               </div>
+               <div class="col s12 l5">
+                    <div class='embed-container'><iframe src='{{product.videoLink}}' frameborder='0' allowfullscreen></iframe></div>
+               </div>
+          </div>
+     </div>
+
+     <div class="container comment-section">
+          <h5>Reviews for this product</h5>
+          Comment section
+     </div>
+
+</div>
+
+<script>
+     let thumbnails = document.getElementsByClassName('thumbnail')
+     let active = document.getElementsByClassName('actives')
+
+     for(var i=0; i < thumbnails.length; i++){
+
+
+          thumbnails[i].addEventListener('mouseover', function(){
+
+
+               if(active.length>0){
+                    active[0].classList.remove('actives')
+               }
+
+               this.classList.add('actives')
+               document.getElementById('product-images').src = this.src
+
+          })
+     }
+</script>

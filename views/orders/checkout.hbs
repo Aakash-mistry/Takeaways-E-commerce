@@ -1,0 +1,112 @@
+<div class="container">
+     <ul class="breadcrumb">
+          <li><a href="/">Home</a></li>
+          <li><a href="/my-cart">My cart</a></li>
+          <li class="black-text">Checkout - Place order</li>
+     </ul>
+</div>
+
+<div class="white checkout-page">
+     <div class="checkout-page-title theme-blue-text center">
+          Takeaways Checkout - confirm your product details
+     </div>
+     <div class="row">
+          <div class="col s12 l6">
+                    {{#if products}}
+                         {{#each products}}
+                         <div class="row " style="margin-top: 20px!important;">
+                              <div class="col s12 z-depth-1-half" style="padding: 10px;">
+                                   <div class="checkout-product">
+                                        <div class="col s12 l3 center">
+                                        <img src="{{this.item.image1}}" class="responsive-img" width="100" alt="">
+                                   </div>
+                                   <div class="col s12 l6">
+                                        <div class="checkout-product-title">
+                                             {{this.item.title}}
+                                        </div>
+                                   </div>
+                                   <div class="col s12 l3" style="margin-top: 50px!important;">
+                                        <span class="checkout-product-qty right">
+                                             Product Quantity <span class="theme-blue-text">
+                                                  {{this.qty}}
+                                             </span>
+                                        </span><br>
+                                        <span class="checkout-product-price right">
+                                             Price <span class="theme-blue-text">
+                                                  ₹ {{this.price}} /-
+                                             </span>
+                                        </span>
+                                   </div>
+                              </div>
+                              </div>
+                         </div>
+                         {{/each}}
+                    {{/if}}
+                    <div class="right">
+                         <h6>
+                              Payable amount <span class="theme-blue-text">₹ {{totalPrice}} /-</span>
+                         </h6>
+                    </div>
+              <div style="margin-bottom: 20px; margin-top: 100px;">
+                    <a href="/" class="btn btn-large orange darken-3">
+                         <i class="material-icons left">keyboard_return</i> Continue shopping
+                    </a>
+               </div>
+          </div>
+          <div class="col s12 l6">
+               <div class="row">
+                    <form style="padding: 10px!important;" class="col s12 z-depth-1" action="/place-this-order" method="POST">
+                         <div class="theme-blue col s12 white-text" style="padding: 10px; margin-bottom: 20px; font-size: 1.2em;">
+                              Your account details
+                         </div>
+                         <div class="row">
+                              <div class="input-field col s6">
+                                   <input id="name" name="customerName" type="text" value="{{user.firstname}}" class="validate" required>
+                                   <label for="name">Customer Name</label>
+                              </div>
+                              <div class="input-field col s6">
+                                   <input id="number" name="customerNumber" type="number" value="{{user.mobile}}" class="validate" required>
+                                   <label for="number">10 digit mobile number</label>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <div class="input-field col s12">
+                                   <input id="email" name="email" type="text" value="{{user.email}}" class="validate" required>
+                                   <label for="email">Customer email</label>
+                              </div>
+                         </div>
+                         <div class="row">
+                             <div class="input-field col s12 white-text theme-blue" style="padding: 10px; margin-bottom: 20px; font-size: 1.2em;">
+                                  Enter Shipping address
+                             </div>
+                             <div class="input-field col s12 l3">
+                                   <input id="pin" name="pincode" type="number" class="validate" required>
+                                   <label for="pin">Pincode</label>
+                             </div>
+                             <div class="input-field col s12 l9">
+                                   <input id="address" name="addressLine" type="text" class="validate" required>
+                                   <label for="address">Address (Area and Street)</label>
+                             </div>
+
+                         </div>
+                          <div class="input-field col s12 white-text theme-blue" style="padding: 10px; margin-bottom: 20px; font-size: 1.2em;">
+                                  Select payment options
+                             </div>
+                         <div class="input-field col s12">
+                              <p>
+                              <label>
+                              <input type="checkbox"  class="filled-in"/>
+                                   <span>Cash on delivery</span>
+                              </label>
+                         </p>
+                         </div>
+                         <div class="input-field">
+                              <button type="submit" class="btn btn-large col s6 offset-s6 orange darken-3">
+                                   confirm order
+                              </button>
+                         </div>
+                    </form>
+               </div>
+          </div>
+     </div>
+</div>

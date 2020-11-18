@@ -1,0 +1,92 @@
+{{#if productLength}}
+
+{{#if messages}}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+     swal("Website will take effect sortly...", "{{this.messages}}", "success");
+</script>
+{{/if}}
+<div class="row" style="margin-top: 100px; margin-bottom: 100px!important;">
+     <div class="col s12 m12 " style="padding: 20px;">
+          {{!-- category data table --}}
+               <div class="row">
+                    <div id="man" class="col s12">
+                    <div class="card material-table z-depth-0">
+                         <div class="table-header">
+                         <span class="table-title ">You have total {{productLength}} Products</span>
+                              <div class="actions center">
+                                   <a href="/admin/create-listing" class="waves-effect btn admin-blue-background">
+                                        <i class="material-icons white-text left">add_box</i> Create new product
+                                   </a>
+                                   <a href="#" class="search-toggle waves-effect  btn-flat nopadding"><i class="material-icons admin-blue-text left">search</i> Search categories</a>
+                              </div>
+                         </div>
+                         <table id="datatable" class="responsive-table highlight centered">
+                         <thead>
+                              <tr>
+                                   <th class="admin-blue-text">PRODUCT IMAGE</th>
+                                   <th class="admin-blue-text">NAME</th>
+                                   <th class="admin-blue-text">PRICE</th>
+                                   <th class="admin-blue-text">CATEGORY</th>
+                                   <th class="admin-blue-text">STOCK LEFT</th>
+                                   <th class="admin-blue-text">ACTIVE STATUS</th>
+                                   <th class="admin-blue-text">ACTION</th>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              {{#each product}}
+                              <tr>
+                                   <td>
+                                        <div class="center">
+                                             <img src="{{this.image1}}" class="responsive-img materialboxed" width="75" alt="">
+                                        </div>
+                                   </td>
+                                   <td style="text-transform: capitalize;">
+                                        {{this.title}}
+                                   </td>
+                                   <td>₹ {{this.realPrice}} /-</td>
+                                   <td  style="text-transform: capitalize;">{{this.category.name}}</td>
+                                   <td>{{this.stock}}</td>
+                                   <td>
+                                        {{#if this.status}}
+                                             <span class="green-text">Active</span>
+                                        {{else}}
+                                             <span class="red-text">Inactive</span>
+                                        {{/if}}
+                                   </td>
+                                   <td>
+                                        <div class="row">
+                                             <div class="col s6">
+                                                  <a href="/admin/edit/product/{{this._id}}" class="green-text btn transparent">
+                                                       <i class="material-icons green-text">edit</i>
+                                                  </a>
+                                             </div>
+                                             <div class="col s6">
+                                                  <form action="/admin/delete/product/{{this._id}}" method="POST">
+                                                       <button class="btn transparent tooltipped"  data-position="bottom" data-tooltip="Delete Tag"><i class="material-icons red-text delete-icon" style="font: 25px;">delete</i></button>
+                                                  </form>
+                                             </div>
+                                        </div>
+                                   </td>
+
+                              </tr>
+                              {{/each}}
+                         </tbody>
+                         </table>
+                    </div>
+                    </div>
+               </div>
+          {{!-- category data table ends --}}
+     </div>
+</div>
+
+     {{else}}
+     <div class="admin-heading-2">
+          No product uploaded
+     </div>
+     <div class="center" style="margin-bottom: 50px;">
+          <a href="/admin/create-listing" class="btn admin-blue-background">
+          Create new product
+     </a>
+     </div>
+{{/if}}

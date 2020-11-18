@@ -1,0 +1,88 @@
+<div class="container login-container">
+     <div class="row  z-depth-1-half">
+          <div class="col s12 hide-on-large-only theme-blue">
+               <div class="row" style="padding: 5px!important;">
+                    <div class="col s6 center">
+                         <div class="black-text white-text left-text-2">
+                              Register account
+                         </div>
+                    </div>
+                    <div class="col s6 center">
+                         <img src="/images/svg/shopping-cart.svg" class="img-responsive" width="150" alt="">
+                    </div>
+               </div>
+          </div>
+          <div class="col s12 m3 l3 login-left-side theme-blue hide-on-med-and-down">
+               <div class="left-text">
+                    Register account
+               </div>
+               <div class="left-paragraph">
+                    Create new account & shop beauty products with us
+               </div>
+               <div class="left-side-image-area-register center">
+                    <img src="/images/svg/shopping-cart.svg" width="150" class="img-responsive" alt="shopping online">
+               </div>
+          </div>
+          <div class="col s12 m12 l9 login-form">
+               <div class="row">
+                    <form action="/create-new-account" method="POST" class="col s12" style="margin-top: 50px;">
+                          <div class="row">
+                              <div class="input-field col s6">
+                                   <input id="firstname" name="fname" type="text" class="validate" required>
+                                   <label for="firstname">First Name</label>
+                              </div>
+                              <div class="input-field col s6">
+                                   <input id="lastname" name="lname" type="text" class="validate" required>
+                                   <label for="lastname">Last Name</label>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <div class="input-field col s12">
+                                   <input id="email" name="email" type="email" class="validate" required>
+                                   <label for="email">Your Email</label>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <div class="input-field col s12">
+                                   <input id="mobile" name="mobile" type="number" class="validate" required>
+                                   <label for="mobile">Mobile number</label>
+                              </div>
+                         </div>
+                          <div class="row">
+                              <div class="input-field col s6">
+                                   <input id="password" name="password" type="password" class="validate" required>
+                                   <label for="password">Enter Password</label>
+                              </div>
+                              <div class="input-field col s6">
+                                   <input id="c_password" name="c_password" type="password" class="validate" required>
+                                   <label for="c_password">Confirm Password</label>
+                                   <a href="#forgot" class="right">Forgot password?</a>
+                              </div>
+                         </div>
+                         <div class="red-text">
+                         {{#if messages}}
+                              {{this.messages}}
+                         {{/if}}
+                         </div>
+                         <div class="row login-button">
+                             <div>
+                                   <button type="submit" class="btn white-text green waves-effect waves-light input-field col s12">Create new account</button>
+
+                                   <div style="margin-top: 30px;">
+                                        <a href="/login" class="btn theme-blue col s12">
+                                        Already have account?
+                                   </a>
+                                   </div>
+                             </div>
+                         </div>
+                    </form>
+               </div>
+          </div>
+     </div>
+</div>
+
+<script>
+   function change(){
+    document.getElementById("myButton1").value="Registering your account";
+}
+</script>

@@ -1,0 +1,173 @@
+<div class="edit-product-form">
+     <div class="container">
+          <div class="admin-heading">
+               Editing {{product.title}}
+          </div>
+          <div class="row">
+               <form class="col s12 white" style="padding: 10px;" action="/admin/edit/product/{{product._id}}"
+                    method="POST">
+                    <div class="row">
+                         <div class="input-field col s12">
+                              <input name="title" id="title" value="{{product.title}}" type="text" class="validate">
+                              <label for="title">Change Dislpay Name</label>
+                         </div>
+                         <div class="input-field col s6">
+                              {{#if categoryLength}}
+                              <select name="category" value="{{product.category.name}}">
+                                   <option value="{{product.category._id}}" selected>{{product.category.name}}</option>
+                                   {{#each category}}
+                                   <option value="{{this._id}}">{{this.name}}</option>
+                                   {{/each}}
+                              </select>
+                              {{/if}}
+                              <label>Change Category</label>
+                         </div>
+                         <div class="input-field col s6">
+                              <select name="status">
+                                   {{#if product.status}}
+                                        <option value="1" selected>Active</option>
+                                        <option value="0">Inactive</option>
+                                   {{else}}
+                                        <option value="0" selected>Inactive</option>
+                                        <option value="1">Active</option>
+                                   {{/if}}
+                              </select>
+                              <label>Change Status</label>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="input-field col s12">
+                              <i class="fa fa-video-camera prefix admin-blue-text"></i>
+                              <input name="videoLink" id="videoLink" value="{{product.videoLink}}" type="text"
+                                   class="validate">
+                              <label for="videoLink">Change product video link (optional)</label>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col s12 l4 input-field">
+                              <i class="material-icons prefix admin-blue-text">inbox</i>
+                              <input type="number" value="{{product.stock}}" name="stock" id="">
+                              <label for="stock">Quantities for sale</label>
+                         </div>
+                         <div class="col s6 l4 input-field">
+                              <i class="fa fa-inr prefix admin-blue-text" style="font-size: 25px;"></i>
+                              <input type="number" value="{{product.realPrice}}" name="salePrice" id="">
+                              <label for="stock">Sale Price</label>
+                         </div>
+                         <div class="col s6 l4 input-field">
+                              <i class="fa fa-inr prefix admin-blue-text" style="font-size: 25px;"></i>
+                              <input type="number" value="{{product.fakePrice}}" name="strikePrice" id="">
+                              <label for="stock">Strike Price</label>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col s12 input-field">
+                              <i class="material-icons prefix admin-blue-text">info_outline</i>
+                              <textarea id="description" name="description"
+                                   class="materialize-textarea">{{product.productDescription}}</textarea>
+                              <label for="description">Product Description</label>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col s12 l6 input-field">
+                              <i class="fa fa-question-circle-o prefix admin-blue-text"></i>
+                              <textarea id="whent-to-use" name="whenToUse" class="materialize-textarea">{{product.whenToUse}}</textarea>
+                              <label for="whent-to-use">When to use?</label>
+                         </div>
+                         <div class="col s12 l6 input-field">
+                              <i class="fa fa-question-circle-o prefix admin-blue-text"></i>
+                              <textarea id="how-to-use" name="howToUse"
+                                   class="materialize-textarea">{{product.howToUse}}</textarea>
+                              <label for="how-to-use">How to use?</label>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col s12 l6 input-field">
+                              <i class="fa fa-question-circle-o prefix admin-blue-text"></i>
+                              <textarea id="benefit" name="benefit"
+                                   class="materialize-textarea">{{product.benefit}}</textarea>
+                              <label for="benefit">Benefits of using it</label>
+                         </div>
+                         <div class="col s12 l6 input-field">
+                              <i class="fa fa-exclamation-triangle prefix admin-blue-text"></i>
+                              <textarea id="warning" name="warning"
+                                   class="materialize-textarea">{{product.warnings}}</textarea>
+                              <label for="warning">Warning of usage</label>
+                         </div>
+                         <div class="col s12 input-field">
+                              <i class="fa fa-american-sign-language-interpreting prefix admin-blue-text"></i>
+                              <textarea id="ingredients" name="ingredients"
+                                   class="materialize-textarea">{{product.ingredients}}</textarea>
+                              <label for="ingredients">Ingredients</label>
+                         </div>
+                    </div>
+
+                    <div style="border: 2px dashed grey; padding: 10px;">
+                         <div style="padding: 10px;" class="admin-blue-background center">
+                              <h5 style="margin-top: 0px!important;" class="white-text">
+                                   You cannot change images
+                              </h5>
+                         </div>
+                         <div class="row">
+                              <div class="col s12 l3">
+                                   <img src="{{product.image1}}" width="{{product.imageWidth1}}" class="responsive-img"
+                                        alt="{{product.title}}">
+                                   <div class="input-field col s12">
+                                        <input type="number" id="width1" name="imageWidth1"
+                                             value="{{product.imageWidth1}}" id="">
+                                        <label for="width1">Change first image width</label>
+                                   </div>
+                                   <div class="input-field col s12">
+                                        <input type="text" id="image1" name="image1" value="{{product.image1}}">
+                                   </div>
+                              </div>
+
+                              <div class="col s12 l3">
+                                   <img src="{{product.image2}}" class="responsive-img" alt="{{product.title}}">
+                                   <div class="input-field">
+                                        <input type="number" id="width2" name="imageWidth2"
+                                             value="{{product.imageWidth2}}" id="">
+                                        <label for="width2">Change second image width</label>
+                                   </div>
+                                   <div class="input-field col s12">
+                                        <input type="text" id="image2" name="image2" value="{{product.image2}}">
+                                   </div>
+                              </div>
+
+                              <div class="col s12 l3">
+                                   <img src="{{product.image3}}" class="responsive-img" alt="{{product.title}}">
+                                   <div class="input-field">
+                                        <input type="number" id="width3" name="imageWidth3"
+                                             value="{{product.imageWidth1}}" id="">
+                                        <label for="width3">Change third image width</label>
+                                   </div>
+                                   <div class="input-field col s12">
+                                        <input type="text" id="image3" name="image3" value="{{product.image3}}">
+                                   </div>
+                              </div>
+
+                              <div class="col s12 l3 center">
+                                   {{#if product.image}}
+                                   <img src="{{product.image4}}" class="responsive-img" alt="{{product.title}}">
+                                   <div class="input-field">
+                                        <input type="number" id="width4" name="imageWidth4"
+                                             value="{{product.imageWidth4}}" id="">
+                                        <label for="width4">Change forth image width</label>
+                                   </div>
+                                   {{else}}
+                                   No image was found
+                                   {{/if}}
+                              </div>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="input-field">
+                              <button type="submit" class="btn col s12 admin-blue-background">
+                                   Change details
+                              </button>
+                         </div>
+                    </div>
+               </form>
+          </div>
+     </div>
+</div>

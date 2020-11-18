@@ -1,0 +1,62 @@
+<ul class="breadcrumb">
+	<li>
+		<a href="/">
+			Home
+		</a>
+	</li>
+	<li>
+		<a href="/">
+			My Account
+		</a>
+	</li>
+	<li class="black-text" style="text-transform:capitalize;">
+		My Orders
+	</li>
+</ul>
+{{#if ordersLength}}
+{{#each orders}}
+<div style="margin-bottom: 20px;">
+	{{#each this.items}}
+	<div class="row white" style="margin-top: 20px!important; border-radius: 2px;">
+		<div class="col s12 l3 center">
+			<div class="order-items">
+				<img width="100" src="{{this.productId.image1}}" class="responsive-img" alt="" />
+			</div>
+		</div>
+		<div class="col s12 l6">
+			<div class="order-items-title">
+				{{this.productId.title}}
+			</div>
+			<div class="order-items-seller">
+				Trassamme / Armani / hrx etc...
+			</div>
+			<div class="order-items-qty">
+				Items - {{this.productQty}} Qty.
+			</div>
+
+			<div class="order-items-price">
+				Total Price - ₹ {{this.productPrice}}
+			</div>
+		</div>
+		<div class="col s12 l3">
+			<div class="ordered-items-cancle-text">
+				<a href="#" class="red-text" onclick="cancel()"><i class="material-icons left">cancel</i> Cancle
+					this order</a>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>
+
+
+{{#if messages}}
+<script>
+	swal("Thank You...!!!", "
+	{{this.messages}}","success");
+</script>
+{{/if}}
+{{/each}}
+
+{{else}}
+You Haven't Order Anything Yet!!!
+{{/if}}

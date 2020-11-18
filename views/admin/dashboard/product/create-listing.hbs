@@ -1,0 +1,262 @@
+<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+     <div class="admin-blue-background white-text center" style="padding: 10px;font-size: 16px">
+          Hey admin, this form has large product details, so be careful while uplaoding details, our database having {{productLength}} products.
+     </div>
+     <div class="row">
+          <form class="col s12 z-depth-1" style="padding: 10px;" action="/admin/create-listing" method="POST">
+               <div class="row">
+                    <div class="input-field col s12 l6">
+                         <input name="title" id="title" type="text" class="validate">
+                         <label for="title">Enter Dislpay Name</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                         {{#if categoryLength}}
+                              <select name="category" class="browser-default">
+                                   <option value="" disabled selected>Choose category</option>
+                                        {{#each category}}
+                                             <option value="{{this._id}}" style="text-transform: capitalize;">
+                                                  <span class="admin-blue-text">{{this.name}}</span>
+                                             </option>
+                                        {{/each}}
+                              </select>
+                         {{/if}}
+                    </div>
+                     {{!-- <div class="input-field col s6">
+                         {{#if categoryLength}}
+                              <select name="category">
+                                   <option value="" disabled selected>Choose Brand</option>
+                                        {{#each category}}
+                                             <option value="{{this._id}}">{{this.name}}</option>
+                                        {{/each}}
+                              </select>
+                         {{/if}}
+                         <label>Select Brand</label>
+                    </div> --}}
+               </div>
+               <div class="row">
+                    <div class="input-field col s12">
+                         <i class="fa fa-video-camera prefix admin-blue-text"></i>
+                         <input name="videoLink" id="videoLink" type="text" class="validate">
+                         <label for="videoLink">Enter product video link (optional)</label>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="col s12 l4 input-field">
+                         <i class="material-icons prefix admin-blue-text">inbox</i>
+                         <input type="number" name="stock" id="">
+                         <label for="stock">Quantities for sale</label>
+                    </div>
+                    <div class="col s6 l4 input-field">
+                         <i class="fa fa-inr prefix admin-blue-text" style="font-size: 25px;"></i>
+                         <input type="number" name="salePrice" id="">
+                         <label for="stock">Sale Price</label>
+                    </div>
+                    <div class="col s6 l4 input-field">
+                         <i class="fa fa-inr prefix admin-blue-text" style="font-size: 25px;"></i>
+                         <input type="number" name="strikePrice" id="">
+                         <label for="stock">Strike Price</label>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="col s12 input-field">
+                         <i class="material-icons prefix admin-blue-text">info_outline</i>
+                          <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                         <label for="description">Product Description</label>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="col s12 l6 input-field">
+                         <i class="fa fa-question-circle-o prefix admin-blue-text"></i>
+                          <textarea id="whent-to-use" name="whenToUse" class="materialize-textarea"></textarea>
+                         <label for="whent-to-use">When to use?</label>
+                    </div>
+                     <div class="col s12 l6 input-field">
+                         <i class="fa fa-question-circle-o prefix admin-blue-text"></i>
+                          <textarea id="how-to-use" name="howToUse" class="materialize-textarea"></textarea>
+                         <label for="how-to-use">How to use?</label>
+                    </div>
+               </div>
+               <div class="row">
+                     <div class="col s12 l6 input-field">
+                         <i class="fa fa-question-circle-o prefix admin-blue-text"></i>
+                          <textarea id="benefit" name="benefit" class="materialize-textarea"></textarea>
+                         <label for="benefit">Benefits of using it</label>
+                    </div>
+                     <div class="col s12 l6 input-field">
+                         <i class="fa fa-exclamation-triangle prefix admin-blue-text"></i>
+                          <textarea id="warning" name="warning" class="materialize-textarea"></textarea>
+                         <label for="warning">Warning of usage</label>
+                    </div>
+                     <div class="col s12 input-field">
+                         <i class="fa fa-american-sign-language-interpreting prefix admin-blue-text"></i>
+                          <textarea id="ingredients" name="ingredients" class="materialize-textarea"></textarea>
+                         <label for="ingredients">Ingredients</label>
+                    </div>
+               </div>
+
+               <div style="border: 2px dashed grey;">
+                    <div class="row">
+                    {{!-- First image file upload --}}
+                         <div class="input-field file-field col s6 l3">
+                              <div class="btn transparent black-text admin-blue-background">
+                                   <span><i class="fa fa-file-image-o"></i></span>
+                                   <input type="hidden" name="photo" id="productImageUrl">
+                                   <input type="file" class="" id="imagePath" required>
+                              </div>
+                              <div class="file-path-wrapper">
+                                   <input type="text" placeholder="Upload image one" class="file-path validate" id="">
+                              </div>
+                         </div>
+                         <div class="input-field col s6 l2">
+                              <input type="number" name="imageWidthOne" id="">
+                              <label for="width">Enter image width</label>
+                         </div>
+                         <div class="input-field col s12 l7">
+                              <p id="uploadLabel"></p>
+                              <img src="" id="imgTag" class="responsive-img materialboxed" alt="">
+                         </div>
+                    </div>
+                    <div class="row">
+                         {{!-- Second image file upload --}}
+                         <div class="input-field file-field col s6 l3">
+                              <div class="btn transparent black-text admin-blue-background">
+                                   <span><i class="fa fa-file-image-o"></i></span>
+                                   <input type="hidden" name="photo2" id="productImageUrl2">
+                                   <input type="file" id="imagePath2">
+                              </div>
+                              <div class="file-path-wrapper">
+                                   <input type="text" placeholder="Upload image two" class="file-path validate" id="">
+                              </div>
+                         </div>
+                         <div class="input-field col s6 l2">
+                              <input type="number" name="imageWidthTwo" id="">
+                              <label for="width">Enter image width</label>
+                         </div>
+                         <div class="input-field col s12 l7">
+                         <p id="uploadLabel2"></p>
+                         <img src="" id="imgTag2" class="responsive-img materialboxed" alt="">
+                         </div>
+                    </div>
+                    <div class="row">
+                         {{!-- Third image file uplaod --}}
+                         <div class="input-field file-field col s6 l3">
+                              <div class="btn transparent black-text admin-blue-background">
+                                   <span><i class="fa fa-file-image-o"></i></span>
+                                   <input type="hidden" name="photo3" id="productImageUrl3">
+                                   <input type="file" id="imagePath3">
+                              </div>
+                              <div class="file-path-wrapper">
+                                   <input type="text" placeholder="Upload image Three" class="file-path validate" id="">
+                              </div>
+                         </div>
+                         <div class="input-field col s6 l2">
+                              <input type="number" name="imageWidthThree" id="">
+                              <label for="width">Enter image width</label>
+                         </div>
+                         <div class="input-field col s12 l7">
+                              <p id="uploadLabel3"></p>
+                              <img src="" id="imgTag3" class="responsive-img materialboxed" alt="">
+                         </div>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="input-field">
+                         <button type="submit" class="btn col s12 admin-blue-background">
+                              Upload
+                         </button>
+                    </div>
+               </div>
+          </form>
+     </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+
+<script>
+     const firebaseConfig = {
+     apiKey: "AIzaSyDGfHWWbWzkYv9_c1f7bymoDJYVOchWvgI",
+     authDomain: "takeaways-e-commerce.firebaseapp.com",
+     databaseURL: "https://takeaways-e-commerce.firebaseio.com",
+     projectId: "takeaways-e-commerce",
+     storageBucket: "takeaways-e-commerce.appspot.com",
+     messagingSenderId: "446467368620",
+     appId: "1:446467368620:web:995f021690577d6a356109",
+     measurementId: "G-5SVE2Z2D2M"
+     };
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig)
+
+     var storage = firebase.storage()
+
+// First image handle
+     const image = document.getElementById('imagePath')
+     const imageShowcase = document.getElementById('imgTag')
+     const uploadLabel = document.getElementById('uploadLabel')
+     const submitButton = document.getElementById('create-product')
+     const productImageUrl = document.getElementById('productImageUrl')
+
+     function firstImageUplaod(e){
+          uploadLabel.innerHTML = "Please wait for uploading images"
+
+          selectedFile = e.target.files[0]
+          storage.ref().child(selectedFile.name).put(selectedFile)
+               .then(data=>{
+                    return data.ref.getDownloadURL()
+               })
+               .then(url => {
+                    uploadLabel.innerHTML = 'uploaded'
+                    imageShowcase.src = url
+                    productImageUrl.value = url
+                    submitButton.disabled = false
+               })
+     }
+
+
+// Two image handle
+     const image2 = document.getElementById('imagePath2')
+     const imageShowcase2 = document.getElementById('imgTag2')
+     const uploadLabel2 = document.getElementById('uploadLabel2')
+     const productImageUrl2 = document.getElementById('productImageUrl2')
+
+     function secondImageUplaod(e){
+          uploadLabel.innerHTML = "Please wait for uploading images"
+
+          selectedFile2 = e.target.files[0]
+          storage.ref().child(selectedFile2.name).put(selectedFile2)
+               .then(data=>{
+                    return data.ref.getDownloadURL()
+               })
+               .then(url => {
+                    uploadLabel2.innerHTML = 'uploaded'
+                    imageShowcase2.src = url
+                    productImageUrl2.value = url
+               })
+     }
+
+
+// Three image handle
+     const image3 = document.getElementById('imagePath3')
+     const imageShowcase3 = document.getElementById('imgTag3')
+     const uploadLabel3 = document.getElementById('uploadLabel3')
+     const productImageUrl3 = document.getElementById('productImageUrl3')
+
+     function thirdImageUplaod(e){
+          uploadLabel.innerHTML = "Please wait for uploading images"
+
+          selectedFile3 = e.target.files[0]
+          storage.ref().child(selectedFile3.name).put(selectedFile3)
+               .then(data=>{
+                    return data.ref.getDownloadURL()
+               })
+               .then(url => {
+                    uploadLabel3.innerHTML = 'uploaded'
+                    imageShowcase3.src = url
+                    productImageUrl3.value = url
+               })
+     }
+
+     document.querySelector('#imagePath').addEventListener('change', firstImageUplaod)
+     document.querySelector('#imagePath2').addEventListener('change', secondImageUplaod)
+     document.querySelector('#imagePath3').addEventListener('change', thirdImageUplaod)
+
+</script>

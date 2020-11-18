@@ -1,0 +1,44 @@
+<div class="row">
+     <div class="col s12 l6 center create-category-left-side">
+          <div class="admin-blue-text admin-heading-2">
+               <span>
+                    <a href="/admin/view-taglist">
+                    <i class="material-icons left" style="margin-top: 8px; font-size: 35px;">keyboard_backspace</i>
+                    </a>
+               </span>
+               You have uploaded <span class="black-text">{{categoryLength}}</span> taglist till now
+          </div>
+          <a href="/admin/view-taglist" class="btn admin-blue-background">
+               View all taglists
+          </a>
+     </div>
+     <div class="col s12 l6">
+          <div class="create-category-right-side">
+               <div class="admin-heading">
+                    provide following details
+               </div>
+               <div class="row">
+                    <form class="col s12" style="margin-top: 50px;" action="/admin/new-taglist" method="POST">
+                         <div class="row">
+                              <div class="input-field col s12 l10 offset-l1">
+                                   <input id="category_name" name="taglistName" type="text" class="validate" required>
+                                   <label for="category_name">Enter Taglist Name</label>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <div class="input-field col s12 l10 offset-l1">
+                                   <input id="category_name" name="taglistDescription" type="text" class="validate" required>
+                                   <label for="category_name">Enter Taglist Description</label>
+                                   <span class="helper-text">Please Write Description only 10-15 words...</span>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <div class="input-field">
+                                   <button type="submit" class="btn col s12 l10 offset-l1 admin-blue-background waves-effect waves-light">Create</button>
+                              </div>
+                         </div>
+                    </form>
+                </div>
+          </div>
+     </div>
+</div>

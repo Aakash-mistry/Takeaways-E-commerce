@@ -1,0 +1,48 @@
+<div class="heading-2" style="margin-top: 30px; margin-bottom: 30px">
+     Edit <span class="admin-blue-text">{{slider.caption}}</span> slider details
+</div>
+
+<div class="container" style="margin-bottom: 50px!important;">
+     <div class="row">
+          <form class="col s12" action="/admin/editing/slider/{{slider._id}}" method="POST">
+               <div class="row">
+                    <div class="input-field col s12 l8">
+                         <input id="caption" name="caption" value="{{slider.caption}}" type="text">
+                         <label for="caption">Write your slider caption</label>
+                    </div>
+                     <div class="input-field col s12 l4">
+                         <input id="caption" name="captionColorName" value="{{slider.captionColour}}" type="text">
+                         <label for="caption">slider caption colour name</label>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="input-field col s12 l4">
+                         <input id="description" name="sliderDescription" value="{{slider.captionDescription}}" type="text">
+                         <label for="description">Your Slider Description</label>
+                    </div>
+                    <div class="input-field col s12 l4">
+                         <input type="text" name="animationName" value="{{slider.animationName}}" id="animation_name">
+                         <label for="animation_name">Take suggession from Name</label>
+                         <span class="helper-text">Name - center-align - left-align - right-align</span>
+                    </div>
+                    <div class="input-field col s12 l4">
+                         <i class="material-icons prefix admin-blue-text">link</i>
+                         <input type="text" value="{{slider.reDirectionLink}}" name="link" id="Link">
+                         <label for="Link">Enter your final redirection link</label>
+                    </div>
+               </div>
+               <div class="row" style="border: 1px dashed grey; padding: 10px!important">
+                     <div class="col s12 l6 offset-l3">
+                          <h5>You cannot change slider image after setting once a time</h5>
+                          <img src="{{slider.sliderImage}}" class="responsive-img materialboxed" alt="">
+                          <input type="text" readonly value="{{slider.sliderImage}}" name="photo">
+                    </div>
+               </div>
+               <div class="row" style="margin-top: 30px!important;">
+                    <button class="col s12 btn admin-blue-background" id="create-slider">
+                         Upload slider
+                    </button>
+               </div>
+          </form>
+     </div>
+</div>
